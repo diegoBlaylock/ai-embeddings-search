@@ -11,10 +11,10 @@ async function main() {
 	config();
 
 	const openAi = new OpenAiClient("text-embedding-ada-002");
-	const clusterer = new Clusterer({ dimensions: 1536, nClusters: 10 });
+	const clusterer = new Clusterer({ dimensions: 1536, nClusters: 4 });
 	const scrapper = new TalkScrapper({
-		lowerYearBound: 2016,
-		maxBatchSize: 1,
+		lowerYearBound: 2018,
+		maxBatchSize: 32,
 	});
 	const generator = new TalkCompiler(scrapper, openAi, clusterer);
 
@@ -49,8 +49,6 @@ async function main() {
 			rowStream.write(rows);
       rowStream.write("\n");
       rowStream.uncork();
-
-			break;
 		}
 	} finally {
 		clusterer.destroy();
