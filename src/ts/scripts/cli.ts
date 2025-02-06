@@ -8,6 +8,8 @@ import { formatWithOptions } from "node:util";
 import type { Talk } from "../models.js";
 import colors from "colors";
 
+const RELATED_CUTOFF = 0.8;
+
 async function main() {
 	config();
 	colors.enable();
@@ -69,10 +71,11 @@ async function main() {
 						"SELECT t.talk_id, t.title, t.author, t.month, t.year, ROUND(MAX(1-( $1 <=> e.embedding)::numeric),4) AS similarity, COUNT(e.embedding) AS related, t.subtitle\n" +
 							"FROM vect.talk t\n" +
 							"INNER JOIN vect.embedding e ON t.talk_id = e.talk_id\n" +
-							"WHERE 1-( $1 <=> e.embedding) > 0.85 \n" +
+							"WHERE 1-( $1 <=> e.embedding) > $2 \n" +
 							"GROUP BY t.talk_id\n" +
-							"ORDER BY similarity DESC, related DESC;",
+							"ORDER BY similarity DESC, related DESC LIMIT 100;",
 						toSql(embedding),
+						RELATED_CUTOFF,
 					);
 
 					await displayLess(formatWithOptions({ colors: true }, "%o", rows));
@@ -111,7 +114,7 @@ async function main() {
 
 async function displayLess(text: string): Promise<void> {
 	const [processPromise, processResolve] = unpackPromise<void>();
-	const less = spawn("less", ["-R"], {
+	const less = spawn("less", ["-R", "-+S"], {
 		stdio: ["pipe", 1, 2],
 		shell: false,
 		env: {
