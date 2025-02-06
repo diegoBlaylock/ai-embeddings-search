@@ -4,6 +4,7 @@ import { ClustererPool } from "../services/data/cluster/index.js";
 import { OpenAiClient } from "../services/openai/client.js";
 import { TalkCompiler } from "../services/data/embeddings.js";
 import { withSql } from "../services/sql/client.js";
+import { toSql } from "../utils.js";
 
 async function main() {
 	config();
@@ -40,7 +41,7 @@ async function main() {
 			const embeddingsRow = documents.flatMap((d, di) =>
 				d.embeddings
 					.filter((row) => !row.includes(Number.NaN))
-					.map((emb) => [ids[di].talk_id, `[${emb.join(",")}]`]),
+					.map((emb) => [ids[di].talk_id, toSql(emb)]),
 			);
 
 			await sql.insertMultiple(

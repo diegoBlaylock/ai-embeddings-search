@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import pg from "pg";
+import pgvector from "pgvector/pg";
 import format from "pg-format";
 
 export async function withSql<T = void>(
@@ -9,13 +10,15 @@ export async function withSql<T = void>(
 		connectionString: process.env.PG_CONNECTION_STRING,
 	});
 	await _client.connect();
-
-	const client = new SqlClient(_client);
-
 	try {
+		await _client.query("CREATE EXTENSION IF NOT EXISTS vector");
+		await pgvector.registerTypes(_client);
+
+		const client = new SqlClient(_client);
+
 		return await fn(client);
 	} finally {
-		await client.destroy();
+		await _client.end();
 	}
 }
 
@@ -26,8 +29,13 @@ class SqlClient {
 		this.#client = client;
 	}
 
-	async query(string: string) {
-		return this.#format(await this.#client.query(string));
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	async query<U = any>(
+		string: string,
+		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+		...values: any[] | []
+	): Promise<U[][]> {
+		return this.#format(await this.#client.query(string, values)) as U[][];
 	}
 
 	async insertMultiple(
@@ -56,6 +64,6 @@ class SqlClient {
 	#format<T extends pg.QueryResultRow>(
 		result: pg.QueryResult<T> | pg.QueryResult<T>[],
 	) {
-		return Array.isArray(result) ? result : [result];
+		return Array.isArray(result) ? result.map((r) => r.rows) : [result.rows];
 	}
 }

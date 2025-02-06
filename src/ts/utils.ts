@@ -64,61 +64,6 @@ export class MutByteBuffer {
 	}
 }
 
-export class MutStrBuffer {
-	#chunks: string[] = [];
-	#size = 0;
-
-	addChunk(chunk: string) {
-		this.#chunks.push(chunk);
-		this.#size += chunk.length;
-
-		if (this.#chunks.length > 1000) {
-			const firstChunks = this.#chunks.splice(0, 1000);
-			this.#chunks.splice(0, 0, firstChunks.join(""));
-		}
-	}
-
-	get size() {
-		return this.#size;
-	}
-
-	clear() {
-		this.#chunks.splice(0);
-		this.#size = 0;
-	}
-
-	peek(length = -1) {
-		const nextChunk = this.get(length);
-		this.#chunks.splice(0, 0, nextChunk);
-		this.#size += nextChunk.length;
-		return nextChunk;
-	}
-
-	get(length = -1) {
-		if (length < 0 || length >= this.size) {
-			const value = this.#chunks.join("");
-			this.clear();
-			return value;
-		}
-
-		const chunksToConcate = [];
-		let chunksSize = 0;
-
-		while (chunksSize < length) {
-			const [nextChunk] = this.#chunks.splice(0, 1);
-			this.#size -= nextChunk.length;
-			if (chunksSize + nextChunk.length > length) {
-				const remainder = length - chunksSize;
-				chunksSize += remainder;
-				chunksToConcate.push(nextChunk.slice(0, remainder));
-				this.#chunks.splice(0, 0, nextChunk.slice(remainder));
-				this.#size += nextChunk.length - remainder;
-			} else {
-				chunksToConcate.push(nextChunk);
-				chunksSize += nextChunk.length;
-			}
-		}
-
-		return chunksToConcate.join("");
-	}
+export function toSql(array: number[] | Float32Array) {
+	return `[${array.join(",")}]`;
 }

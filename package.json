@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "upload": "tsx src/ts/upload.ts"
+    "cli": "FORCE_COLOR=1 NPM_CONFIG_COLOR=always tsx src/ts/scripts/cli.ts",
+    "upload": "tsx src/ts/scripts/upload.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,10 +23,12 @@
   },
   "dependencies": {
     "async-mutex": "^0.5.0",
+    "colors": "^1.4.0",
     "csv": "^6.3.11",
     "jsdom": "^26.0.0",
     "openai": "^4.82.0",
     "pg": "^8.13.1",
-    "pg-format": "^1.0.4"
+    "pg-format": "^1.0.4",
+    "pgvector": "^0.2.0"
   }
 }
