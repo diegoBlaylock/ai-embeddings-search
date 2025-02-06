@@ -1,14 +1,18 @@
 -- Setup
 
-DROP SCHEMA IF EXISTS ai CASCADE;
-CREATE SCHEMA ai;
+
+DROP SCHEMA IF EXISTS vect CASCADE;
+CREATE SCHEMA vect;
+GRANT ALL ON SCHEMA vect TO PUBLIC;
+GRANT ALL ON ALL TABLES IN SCHEMA vect TO PUBLIC;
+
 
 CREATE EXTENSION IF NOT EXISTS vector;
 
 -- Entities
 
-CREATE TABLE ai.talk (
-  table_id SERIAL,
+CREATE TABLE vect.talk (
+  talk_id SERIAL,
   title VARCHAR(128) NOT NULL,
   subtitle VARCHAR(255),
   author VARCHAR(128) NOT NULL,
@@ -16,13 +20,15 @@ CREATE TABLE ai.talk (
   month CHAR(3) NOT NULL,
   year SMALLINT NOT NULL,
   text TEXT NOT NULL,
-  PRIMARY KEY (table_id)
+  PRIMARY KEY (talk_id)
 );
 
-CREATE TABLE ai.embedding (
+CREATE TABLE vect.embedding (
   embedding_id SERIAL,
-  table_id INT NOT NULL,
+  talk_id INT NOT NULL,
   embedding VECTOR(1536),
   PRIMARY KEY (embedding_id),
-  FOREIGN KEY (table_id) REFERENCES ai.talk ON (table_id)
+  FOREIGN KEY (talk_id) REFERENCES vect.talk (talk_id)
 );
+
+CREATE INDEX ON vect.embedding USING hnsw(embedding vector_cosine_ops);

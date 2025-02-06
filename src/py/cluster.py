@@ -1,4 +1,3 @@
-import os
 import sys
 import torch
 from pykeops.torch import LazyTensor
@@ -11,8 +10,8 @@ def cluster_vectors(num_clusters: int, vectors: torch.Tensor):
     """Adapted from https://www.kernel-operations.io/keops/_auto_tutorials/kmeans/plot_kmeans_torch.html"""
     n_iters = 10
 
-    sys.stderr.write("Going to process vectors\n")
-    sys.stderr.flush()
+    # sys.stderr.write("Going to process vectors\n")
+    # sys.stderr.flush()
 
     N, D = vectors.shape  # Number of samples, dimension of the ambient space
 
@@ -54,15 +53,20 @@ def main():
     clusters = int(clusters)
     device = torch.device(rest[0]) if rest else "cpu"
     sys.stderr.write(f"Dimension {dimensions} : clusters {clusters} \n")
+    sys.stderr.flush()
     buffer = b""
+    batch_size = 1
     while True:
-        vector_bytes = sys.stdin.buffer.read(1)
+        vector_bytes = sys.stdin.buffer.read(
+            max(4 * dimensions * batch_size - len(buffer), 1)
+        )
         buffer += vector_bytes
         if len(buffer) < 4:
             continue
         batch_size = int.from_bytes(buffer[:4], "big")
         num_bytes = 4 * dimensions * batch_size
-
+        # sys.stderr.write(f"size {batch_size} len {len(buffer)} expected {num_bytes}\n")
+        # sys.stderr.flush()
         if len(buffer) >= num_bytes + 4:
             vector = torch.frombuffer(
                 bytearray(buffer[4 : num_bytes + 4]),
@@ -70,11 +74,17 @@ def main():
                 count=dimensions * batch_size,
             ).to(device)
 
+            buffer = buffer[num_bytes + 4 :]
+
             output_tensor = cluster_vectors(
                 clusters, vector.view(size=(batch_size, dimensions))
             )
+            # sys.stderr.write(f"processed_vector")
+            # sys.stderr.flush()
             outputVector(output_tensor)
-            buffer = buffer[num_bytes + 4 :]
+            # sys.stderr.write(f"done")
+            # sys.stderr.flush()
+            batch_size = 1
 
 
 if __name__ == "__main__":
