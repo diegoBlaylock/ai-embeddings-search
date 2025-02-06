@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "cli": "FORCE_COLOR=1 NPM_CONFIG_COLOR=always tsx src/ts/scripts/cli.ts",
+    "experiment": "tsx src/ts/scripts/experiment.ts",
     "download:local": "tsx src/ts/scripts/download-local.ts",
     "upload:local": "tsx src/ts/scripts/upload-local.ts",
     "upload": "tsx src/ts/scripts/upload.ts"

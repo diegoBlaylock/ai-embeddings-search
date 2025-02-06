@@ -6,14 +6,30 @@ import { TalkCompiler } from "../services/data/embeddings.js";
 import { withSql } from "../services/sql/client.js";
 import { toSql } from "../utils.js";
 
+// VARIABLES
+
+const MODEL = "text-embedding-ada-002";
+const DIMENSIONS = 1536;
+
+const N_CLUSTERS = 6;
+const N_CLST_WORKERS = 8;
+
+const MIN_YEAR = 2000;
+const BATCH_SIZE = 64;
+
+// MAIN
+
 async function main() {
 	config();
 
-	const openAi = new OpenAiClient("text-embedding-ada-002");
-	const clusterer = new ClustererPool(6, { dimensions: 1536, nClusters: 8 });
+	const openAi = new OpenAiClient(MODEL);
+	const clusterer = new ClustererPool(N_CLST_WORKERS, {
+		dimensions: DIMENSIONS,
+		nClusters: N_CLUSTERS,
+	});
 	const scrapper = new TalkScrapper({
-		lowerYearBound: 2000,
-		maxBatchSize: 64,
+		lowerYearBound: MIN_YEAR,
+		maxBatchSize: BATCH_SIZE,
 	});
 	const generator = new TalkCompiler(scrapper, openAi, clusterer);
 	withSql(async (sql) => {

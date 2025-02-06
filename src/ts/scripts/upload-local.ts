@@ -5,6 +5,12 @@ import { createInterface, type Interface } from "node:readline";
 import { withSql } from "../services/sql/client.js";
 import { toSql, unpackPromise } from "../utils.js";
 
+// VARIABLES
+
+const BATCH_SIZE = 128;
+
+// MAIN
+
 async function main() {
 	config();
 
@@ -36,7 +42,7 @@ async function main() {
 
 			let count = 0;
 			while (lines.length > 0) {
-				const batch = lines.splice(0, 128);
+				const batch = lines.splice(0, BATCH_SIZE);
 
 				try {
 					const objects = batch.map((line) => JSON.parse(line));

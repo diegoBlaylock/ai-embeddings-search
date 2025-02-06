@@ -2,13 +2,18 @@ import { config } from "dotenv";
 import { OpenAiClient } from "../services/openai/client.js";
 import { withSql } from "../services/sql/client.js";
 import { createInterface } from "node:readline";
-import { toSql, unpackPromise } from "../utils.js";
+import { toSql, unpackPromise, semanticQuery as sQuery } from "../utils.js";
 import { spawn } from "node:child_process";
 import { formatWithOptions } from "node:util";
 import type { Talk } from "../models.js";
 import colors from "colors";
 
-const RELATED_CUTOFF = 0.8;
+// VARIABLES
+
+const CUTOFF = 0.1;
+const LIMIT = 100;
+
+// MAIN
 
 async function main() {
 	config();
@@ -67,16 +72,7 @@ async function main() {
 				try {
 					const [embedding] = await openAi.getEmbeddings([answer]);
 
-					const [rows] = await sql.query(
-						"SELECT t.talk_id, t.title, t.author, t.month, t.year, ROUND(MAX(1-( $1 <=> e.embedding)::numeric),4) AS similarity, COUNT(e.embedding) AS related, t.subtitle\n" +
-							"FROM vect.talk t\n" +
-							"INNER JOIN vect.embedding e ON t.talk_id = e.talk_id\n" +
-							"WHERE 1-( $1 <=> e.embedding) > $2 \n" +
-							"GROUP BY t.talk_id\n" +
-							"ORDER BY similarity DESC, related DESC LIMIT 100;",
-						toSql(embedding),
-						RELATED_CUTOFF,
-					);
+					const rows = await sQuery(sql, embedding, CUTOFF, LIMIT);
 
 					await displayLess(formatWithOptions({ colors: true }, "%o", rows));
 				} finally {

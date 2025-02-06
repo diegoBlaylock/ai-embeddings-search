@@ -1,3 +1,5 @@
+import type { SqlClient } from "./services/sql/client.js";
+
 export function unpackPromise<T>(): [
 	Promise<T>,
 	(val: T) => void,
@@ -66,4 +68,29 @@ export class MutByteBuffer {
 
 export function toSql(array: number[] | Float32Array) {
 	return `[${array.join(",")}]`;
+}
+
+export async function semanticQuery(
+	sql: SqlClient,
+	embedding: Float32Array,
+	cutoff = 0.11,
+	limit = 100,
+) {
+	const similarity = "(1 - 20 / 3 * ( $1 <=> e.embedding))";
+	const [rows] = await sql.query(
+		`
+      SELECT t.talk_id, t.title, t.author, t.month, t.year, ROUND( MAX(${similarity})::numeric, 4) AS similarity, COUNT(e.embedding) AS related, t.subtitle
+      FROM vect.talk t
+      INNER JOIN vect.embedding e ON t.talk_id = e.talk_id
+      WHERE ${similarity} > $2
+      GROUP BY t.talk_id
+      ORDER BY similarity DESC, related DESC 
+      LIMIT $3;
+    `,
+		toSql(embedding),
+		cutoff,
+		limit,
+	);
+
+	return rows;
 }

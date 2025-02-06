@@ -1,0 +1,338 @@
+{
+  "results": [
+    {
+      "query": "stories about airplanes",
+      "rows": [
+        {
+          "talk_id": 886,
+          "title": "The Joy of the Priesthood",
+          "author": "Dieter F. Uchtdorf",
+          "month": "Oct",
+          "year": 2012,
+          "similarity": "0.4382",
+          "related": "3",
+          "subtitle": "Let us embrace and understand the wonder and privilege of the priesthood. Let us accept and love the responsibilities we are asked to fulfill."
+        },
+        {
+          "talk_id": 1463,
+          "title": "Are You Sleeping through the Restoration?",
+          "author": "Dieter F. Uchtdorf",
+          "month": "Apr",
+          "year": 2014,
+          "similarity": "0.3324",
+          "related": "1",
+          "subtitle": "There is too much at stake for us as individuals, as families, and as Christ's Church to give only a halfhearted effort to this sacred work."
+        },
+        {
+          "talk_id": 1533,
+          "title": "When the Lord Commands",
+          "author": "Bruce A. Carlson",
+          "month": "Apr",
+          "year": 2010,
+          "similarity": "0.2970",
+          "related": "1",
+          "subtitle": "Faithful obedience, regardless of the apparent size of the task, will bring the Lord's guidance, assistance, and peace."
+        },
+        {
+          "talk_id": 396,
+          "title": "We Are Doing a Great Work and Cannot Come Down",
+          "author": "Dieter F. Uchtdorf",
+          "month": "Apr",
+          "year": 2009,
+          "similarity": "0.2681",
+          "related": "1",
+          "subtitle": "We cannot and we must not allow ourselves to get distracted from our sacred duty. We cannot and we must not lose focus on the things that matter most."
+        },
+        {
+          "talk_id": 85,
+          "title": "A Higher Joy",
+          "author": "Dieter F. Uchtdorf",
+          "month": "Apr",
+          "year": 2024,
+          "similarity": "0.2457",
+          "related": "1",
+          "subtitle": "May we all seek and find the higher joy that comes from devoting our lives to our Heavenly Father and His Beloved Son."
+        }
+      ]
+    },
+    {
+      "query": "money and financial prudence",
+      "rows": [
+        {
+          "talk_id": 1251,
+          "title": "Earthly Debts, Heavenly Debts",
+          "author": "Joseph B. Wirthlin",
+          "month": "Apr",
+          "year": 2004,
+          "similarity": "0.3997",
+          "related": "3",
+          "subtitle": "We have earthly debts and heavenly debts. Let us be wise in dealing with each of them."
+        },
+        {
+          "talk_id": 1670,
+          "title": "To the Women of the Church",
+          "author": "Gordon B. Hinckley",
+          "month": "Oct",
+          "year": 2003,
+          "similarity": "0.2950",
+          "related": "1",
+          "subtitle": "Thank you for being the kind of people you are and doing the things you do. May the blessings of heaven rest upon you."
+        },
+        {
+          "talk_id": 763,
+          "title": "Meeting the Challenges of Today's World",
+          "author": "Robert D. Hales",
+          "month": "Oct",
+          "year": 2015,
+          "similarity": "0.2927",
+          "related": "1",
+          "subtitle": "The choices you make—mission, education, marriage, career, and service in the Church—will shape your eternal destiny."
+        },
+        {
+          "talk_id": 482,
+          "title": "The Best Investment",
+          "author": "Sheldon F. Child",
+          "month": "Apr",
+          "year": 2008,
+          "similarity": "0.2630",
+          "related": "1",
+          "subtitle": "If you always pay an honest tithing, the Lord will bless you. It will be the best investment you will ever make."
+        },
+        {
+          "talk_id": 1799,
+          "title": "Lay Up in Store",
+          "author": "By Bishop Keith B. McMullin",
+          "month": "Apr",
+          "year": 2007,
+          "similarity": "0.2540",
+          "related": "1",
+          "subtitle": "We call upon priesthood bearers to store sufficient so that you and your family can weather the vicissitudes of life."
+        }
+      ]
+    },
+    {
+      "query": "talks about abuse",
+      "rows": [
+        {
+          "talk_id": 471,
+          "title": "To Heal the Shattering Consequences of Abuse",
+          "author": "Richard G. Scott",
+          "month": "Apr",
+          "year": 2008,
+          "similarity": "0.3678",
+          "related": "4",
+          "subtitle": "The power of healing is inherent in the Atonement of Jesus Christ."
+        },
+        {
+          "talk_id": 1615,
+          "title": "Personal Worthiness to Exercise the Priesthood",
+          "author": "Gordon B. Hinckley",
+          "month": "Apr",
+          "year": 2002,
+          "similarity": "0.3530",
+          "related": "1",
+          "subtitle": "Our behavior in public must be above reproach. Our behavior in private is even more important. It must clear the standard set by the Lord."
+        },
+        {
+          "talk_id": 561,
+          "title": "The Women in Our Lives",
+          "author": "Gordon B. Hinckley",
+          "month": "Oct",
+          "year": 2004,
+          "similarity": "0.2777",
+          "related": "2",
+          "subtitle": "How thankful I am, how thankful we all must be, for the women in our lives."
+        },
+        {
+          "talk_id": 882,
+          "title": "Protect the Children",
+          "author": "Dallin H. Oaks",
+          "month": "Oct",
+          "year": 2012,
+          "similarity": "0.2462",
+          "related": "2",
+          "subtitle": "None should resist the plea that we unite to increase our concern for the welfare and future of our children—the rising generation."
+        },
+        {
+          "talk_id": 555,
+          "title": "A Tragic Evil among Us",
+          "author": "Gordon B. Hinckley",
+          "month": "Oct",
+          "year": 2004,
+          "similarity": "0.2355",
+          "related": "2",
+          "subtitle": "[Pornography] is like a raging storm, destroying individuals and families, utterly ruining what was once wholesome and beautiful."
+        }
+      ]
+    },
+    {
+      "query": "women and the priesthood",
+      "rows": [
+        {
+          "talk_id": 1460,
+          "title": "The Keys and Authority of the Priesthood",
+          "author": "Dallin H. Oaks",
+          "month": "Apr",
+          "year": 2014,
+          "similarity": "0.4710",
+          "related": "5",
+          "subtitle": "Priesthood keys direct women as well as men, and priesthood ordinances and priesthood authority pertain to women as well as men."
+        },
+        {
+          "talk_id": 1524,
+          "title": "The Power of the Priesthood",
+          "author": "Boyd K. Packer",
+          "month": "Apr",
+          "year": 2010,
+          "similarity": "0.4499",
+          "related": "5",
+          "subtitle": "The priesthood does not have the strength that it should have and will not have until the power of the priesthood is firmly fixed in the families."
+        },
+        {
+          "talk_id": 1758,
+          "title": "The Powers of Heaven",
+          "author": "David A. Bednar",
+          "month": "Apr",
+          "year": 2012,
+          "similarity": "0.4324",
+          "related": "4",
+          "subtitle": "Priesthood holders young and old need both authority and power—the necessary permission and the spiritual capacity to represent God in the work of salvation."
+        },
+        {
+          "talk_id": 1179,
+          "title": "Honoring the Priesthood",
+          "author": "By Bishop H. David Burton",
+          "month": "Apr",
+          "year": 2000,
+          "similarity": "0.4317",
+          "related": "3",
+          "subtitle": "Priesthood isn't something we take off during the week and put on for Sunday. It is a 24-7 privilege and blessing—that is, 24 hours a day, 7 days a week."
+        },
+        {
+          "talk_id": 1057,
+          "title": "LDS Women Are Incredible!",
+          "author": "Quentin L. Cook",
+          "month": "Apr",
+          "year": 2011,
+          "similarity": "0.4293",
+          "related": "6",
+          "subtitle": "Much of what we accomplish in the Church is due to the selfless service of women."
+        }
+      ]
+    },
+    {
+      "query": "how to be more charitable to others",
+      "rows": [
+        {
+          "talk_id": 1595,
+          "title": "Charity Never Faileth",
+          "author": "By Silvia H. Allred",
+          "month": "Oct",
+          "year": 2011,
+          "similarity": "0.3935",
+          "related": "1",
+          "subtitle": "Plead for a desire to be filled with the gift of charity, the pure love of Christ."
+        },
+        {
+          "talk_id": 1708,
+          "title": "I Will Bring the Light of the Gospel into My Home",
+          "author": "By Jean B. Bingham",
+          "month": "Oct",
+          "year": 2016,
+          "similarity": "0.3361",
+          "related": "3",
+          "subtitle": "We can bring the light of the gospel into our homes, schools, and workplaces if we look for and share positive things about others."
+        },
+        {
+          "talk_id": 686,
+          "title": "One More Day",
+          "author": "Taylor G. Godoy",
+          "month": "Apr",
+          "year": 2018,
+          "similarity": "0.3220",
+          "related": "2",
+          "subtitle": "We all have a \"today\" to live, and the key to making our day successful is to be willing to sacrifice."
+        },
+        {
+          "talk_id": 751,
+          "title": "Charity Never Faileth",
+          "author": "Thomas S. Monson",
+          "month": "Oct",
+          "year": 2010,
+          "similarity": "0.2946",
+          "related": "2",
+          "subtitle": "Rather than being judgmental and critical of each other, may we have the pure love of Christ for our fellow travelers in this journey through life."
+        },
+        {
+          "talk_id": 766,
+          "title": "Tested and Tempted—but Helped",
+          "author": "Hugo Montoya",
+          "month": "Oct",
+          "year": 2015,
+          "similarity": "0.2886",
+          "related": "1",
+          "subtitle": "We can help each other as children of our Heavenly Father in our trials and temptations."
+        }
+      ]
+    },
+    {
+      "query": "relationship between forgiveness and justice",
+      "rows": [
+        {
+          "talk_id": 1803,
+          "title": "The Healing Power of Forgiveness",
+          "author": "James E. Faust",
+          "month": "Apr",
+          "year": 2007,
+          "similarity": "0.4141",
+          "related": "2",
+          "subtitle": "If we can find forgiveness in our hearts for those who have caused us hurt and injury, we will rise to a higher level of self-esteem and well-being."
+        },
+        {
+          "talk_id": 652,
+          "title": "The Healing Ointment of Forgiveness",
+          "author": "Kevin R. Duncan",
+          "month": "Apr",
+          "year": 2016,
+          "similarity": "0.4038",
+          "related": "3",
+          "subtitle": "Forgiveness is a glorious, healing principle. We do not need to be a victim twice. We can forgive."
+        },
+        {
+          "talk_id": 1311,
+          "title": "Forgiveness Will Change Bitterness to Love",
+          "author": "David E. Sorensen",
+          "month": "Apr",
+          "year": 2003,
+          "similarity": "0.3683",
+          "related": "1",
+          "subtitle": "Forgiveness means that problems of the past no longer dictate our destinies, and we can focus on the future with God's love in our hearts."
+        },
+        {
+          "talk_id": 1764,
+          "title": "The Merciful Obtain Mercy",
+          "author": "Dieter F. Uchtdorf",
+          "month": "Apr",
+          "year": 2012,
+          "similarity": "0.3380",
+          "related": "3",
+          "subtitle": "When our hearts are filled with the love of God, we become \"kind one to another, tenderhearted, forgiving.\""
+        },
+        {
+          "talk_id": 681,
+          "title": "Even as Christ Forgives You, So Also Do Ye",
+          "author": "Larry J. Echo Hawk",
+          "month": "Apr",
+          "year": 2018,
+          "similarity": "0.3206",
+          "related": "2",
+          "subtitle": "We can all receive unspeakable peace and partnering with our Savior as we learn to freely forgive those who have trespassed against us."
+        }
+      ]
+    },
+    {
+      "query": "kolob and cultic subjects",
+      "rows": []
+    }
+  ]
+}

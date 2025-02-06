@@ -6,6 +6,19 @@ import { TalkCompiler } from "../services/data/embeddings.js";
 import { createWriteStream } from "node:fs";
 import { mkdir } from "node:fs/promises";
 
+// VARIABLES
+
+const MODEL = "text-embedding-ada-002";
+const DIMENSIONS = 1536;
+
+const N_CLUSTERS = 6;
+const N_CLST_WORKERS = 6;
+
+const MIN_YEAR = 2012;
+const BATCH_SIZE = 64;
+
+// MAIN
+
 async function main() {
 	config();
 
@@ -14,11 +27,14 @@ async function main() {
 		encoding: "utf-8",
 	});
 
-	const openAi = new OpenAiClient("text-embedding-ada-002");
-	const clusterer = new ClustererPool(6, { dimensions: 1536, nClusters: 6 });
+	const openAi = new OpenAiClient(MODEL);
+	const clusterer = new ClustererPool(N_CLST_WORKERS, {
+		dimensions: DIMENSIONS,
+		nClusters: N_CLUSTERS,
+	});
 	const scrapper = new TalkScrapper({
-		lowerYearBound: 2012,
-		maxBatchSize: 64,
+		lowerYearBound: MIN_YEAR,
+		maxBatchSize: BATCH_SIZE,
 	});
 	const generator = new TalkCompiler(scrapper, openAi, clusterer);
 
