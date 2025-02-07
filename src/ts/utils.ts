@@ -76,6 +76,10 @@ export async function semanticQuery(
 	cutoff = 0.11,
 	limit = 100,
 ) {
+	/**
+	 * This similarity score normalized the cosine similarity to [-1, 1] using the bound [0.7, 1]. This is because the way
+	 * `ada-002` is trained means that most of its vectors will be 0.7 - 1 similar.
+	 */
 	const similarity = "(1 - 20 / 3 * ( $1 <=> e.embedding))";
 	const [rows] = await sql.query(
 		`
