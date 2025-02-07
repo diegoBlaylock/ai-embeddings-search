@@ -42,7 +42,6 @@ export class Clusterer implements IClusterer {
 	#nClusters: number;
 
 	#mutex = new Mutex();
-	#buffMutex = new Mutex();
 
 	#resolves: ((clusters: Float32Array[]) => void)[] = [];
 	#rejects: ((err: unknown) => void)[] = [];

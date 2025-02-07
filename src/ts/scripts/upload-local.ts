@@ -21,8 +21,6 @@ async function main() {
 		let reader: Interface;
 
 		try {
-			// console.log(readStream.read(100).toString());
-
 			await sql
 				.executeScript("./src/sql/create-table.sql")
 				.catch(console.error);
@@ -33,10 +31,7 @@ async function main() {
 				input: createReadStream("./data/talks.jsonl", { encoding: "utf-8" }),
 			});
 			reader.on("close", () => resolve());
-			reader.on("line", (line) => {
-				// console.log(lines.length);
-				lines.push(line);
-			});
+			reader.on("line", (line) => lines.push(line));
 
 			await finishedReading;
 
